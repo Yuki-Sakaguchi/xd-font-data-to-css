@@ -1,6 +1,7 @@
 const { Text } = require("scenegraph")
 const { alert, error } = require("./lib/dialogs.js");
 const clipboard = require("clipboard")
+const application = require("application")
 
 /**
  * Textオブジェクトからフォントのデータを取得
@@ -24,6 +25,14 @@ function getFontStyle (item) {
  */
 function getFontDataAll (selection, documentRoot) {
     try {
+        if (selection.items.length == 0) {
+            if (application.appLanguage == 'ja') {
+                error('Convert font data to CSS', 'コピーに失敗しました! テキストを選択してください。')
+            } else {
+                error('Convert font data to CSS', 'Copy failed! Please select text.')
+            }
+            return
+        }
         for (let i = 0; i < selection.items.length; i++) {
             let item = selection.items[i]
             if (item instanceof Text) {
@@ -31,13 +40,25 @@ function getFontDataAll (selection, documentRoot) {
                 console.log(item.styleRanges)
                 console.log(results)
                 clipboard.copyText(results)
-                alert('Convert font data to CSS', 'Successfully copied all font style!')
+                if (application.appLanguage == 'ja') {
+                    alert('Convert font data to CSS', '全てのフォントスタイルのコピーに成功しました!')
+                } else {
+                    alert('Convert font data to CSS', 'Successfully copied all font style!')
+                }
             } else {
-                error('Convert font data to CSS', 'Copy failed! Please select text.')
+                if (application.appLanguage == 'ja') {
+                    error('Convert font data to CSS', 'コピーに失敗しました! テキストを選択してください。')
+                } else {
+                    error('Convert font data to CSS', 'Copy failed! Please select text.')
+                }
             }
         }
     } catch (e) {
-        error('Convert font data to CSS', 'An error has occured', e)
+        if (application.appLanguage == 'ja') {
+            error('Convert font data to CSS', 'エラーが発生しました。', e)
+        } else {
+            error('Convert font data to CSS', 'An error has occured', e)
+        }
     }
 }
 
@@ -48,6 +69,14 @@ function getFontDataAll (selection, documentRoot) {
  */
 function getCharSpacing (selection, documentRoot) {
     try {
+        if (selection.items.length == 0) {
+            if (application.appLanguage == 'ja') {
+                error('Convert font data to CSS', 'コピーに失敗しました! テキストを選択してください。')
+            } else {
+                error('Convert font data to CSS', 'Copy failed! Please select text.')
+            }
+            return
+        }
         for (let i = 0; i < selection.items.length; i++) {
             let item = selection.items[i]
             if (item instanceof Text) {
@@ -55,13 +84,25 @@ function getCharSpacing (selection, documentRoot) {
                 const resultText = `letter-spacing: ${result}em;`
                 console.log(resultText)
                 clipboard.copyText(resultText)
-                alert('Convert font data to CSS', 'Successfully copied letter-spacing!')
+                if (application.appLanguage == 'ja') {
+                    alert('Convert font data to CSS', 'letter-spacingのコピーに成功しました!')
+                } else {
+                    alert('Convert font data to CSS', 'Successfully copied all font style!')
+                }
             } else {
-                error('Convert font data to CSS', 'Copy failed! Please select text.')
+                if (application.appLanguage == 'ja') {
+                    error('Convert font data to CSS', 'コピーに失敗しました! テキストを選択してください。')
+                } else {
+                    error('Convert font data to CSS', 'Copy failed! Please select text.')
+                }
             }
         }
     } catch (e) {
-        error('Convert font data to CSS', 'An error has occured', e)
+        if (application.appLanguage == 'ja') {
+            error('Convert font data to CSS', 'エラーが発生しました。', e)
+        } else {
+            error('Convert font data to CSS', 'An error has occured', e)
+        }
     }
 }
 
@@ -72,6 +113,14 @@ function getCharSpacing (selection, documentRoot) {
  */
 function getLineHeight (selection, documentRoot) {
     try {
+        if (selection.items.length == 0) {
+            if (application.appLanguage == 'ja') {
+                error('Convert font data to CSS', 'コピーに失敗しました! テキストを選択してください。')
+            } else {
+                error('Convert font data to CSS', 'Copy failed! Please select text.')
+            }
+            return
+        }
         for (let i = 0; i < selection.items.length; i++) {
             let item = selection.items[i]
             if (item instanceof Text) {
@@ -79,13 +128,25 @@ function getLineHeight (selection, documentRoot) {
                 const resultText = `line-height: ${result};`
                 console.log(resultText)
                 clipboard.copyText(resultText)
-                alert('Convert font data to CSS', 'Successfully copied line-height!')
+                if (application.appLanguage == 'ja') {
+                    alert('Convert font data to CSS', 'line-heightのコピーに成功しました!')
+                } else {
+                    alert('Convert font data to CSS', 'Successfully copied line-height!')
+                }
             } else {
-                error('Convert font data to CSS', 'Copy failed! Please select text.')
+                if (application.appLanguage == 'ja') {
+                    error('Convert font data to CSS', 'コピーに失敗しました! テキストを選択してください。')
+                } else {
+                    error('Convert font data to CSS', 'Copy failed! Please select text.')
+                }
             }
         }
     } catch (e) {
-        error('Convert font data to CSS', 'An error has occured', e)
+        if (application.appLanguage == 'ja') {
+            error('Convert font data to CSS', 'エラーが発生しました。', e)
+        } else {
+            error('Convert font data to CSS', 'An error has occured', e)
+        }
     }
 }
 
