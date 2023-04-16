@@ -1,6 +1,6 @@
 ![xd-plugin](https://yuki-sakaguchi.github.io/xd-font-data-to-css/design/xd.png)
 
-# Convert font data to CSS for XD
+# [Convert font data to CSS for XD](https://exchange.adobe.com/apps/cc/0d8bbfb7)
 line-heightやletter-spacingを計算してコピーしてくれるプラグインです。  
 
 以下の記事を見て、自分で計算するのが面倒なので作りました。。  
